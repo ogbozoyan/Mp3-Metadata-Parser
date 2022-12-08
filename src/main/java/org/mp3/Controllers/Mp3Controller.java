@@ -16,7 +16,7 @@ class Id {
 }
 public class Mp3Controller {
     public long id;
-    public String buf;
+    private String buf;
     public BodyContentHandler handler;
     public JSONObject js;
     public Metadata metadata;
@@ -66,7 +66,7 @@ public class Mp3Controller {
         }
     }
 
-    public void data2js() throws IOException {
+    public String data2js() throws IOException {
         js.put("File id",this.id);
         js.put("Name",metadata.get(metadataNames[9]));
         js.put("Artist",metadata.get(metadataNames[6]));
@@ -80,6 +80,6 @@ public class Mp3Controller {
         FileWriter file = new FileWriter(filename);
         file.write(js.toJSONString());
         file.close();
-        System.out.println("Saved file in "+filename);
+        return ("Saved file in "+filename);
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public class fileController {
     private static List<String> prevfilenames = new ArrayList<>();
 
-    public static void get10files(){
+    public static List<String> get10files(){
         File[] files = new File("files/parsed").listFiles();
         List<String> filenames = new ArrayList<String>();
         if(files == null) {
@@ -34,6 +34,7 @@ public class fileController {
                     }
                 }
             }
+            return filenames;
         }
 
     public static @NotNull ArrayList getFilenames(){
